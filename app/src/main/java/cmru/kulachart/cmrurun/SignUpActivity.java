@@ -10,10 +10,10 @@ import android.widget.RadioGroup;
 public class SignUpActivity extends AppCompatActivity {
 
     //explicit
-    private EditText nameEditText, passwordEditText , userEditText;
+    private EditText nameEditText, passwordEditText, userEditText;
     private RadioGroup radioGroup;
-    private RadioButton avatar0RadioButton, avatar1RadioButton, avatar2RadioButton, avatar3RadioButton, avatar4RadioButton, avatar5RadioButton;
-    private String nameString, userString, passwordString;
+    private RadioButton avatar0RadioButton, avatar1RadioButton, avatar2RadioButton, avatar3RadioButton, avatar4RadioButton;
+    private String nameString, userString, passwordString, avatarString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +26,34 @@ public class SignUpActivity extends AppCompatActivity {
         passwordEditText = (EditText) findViewById(R.id.editText3);
         radioGroup = (RadioGroup) findViewById(R.id.radAvatar);
         avatar0RadioButton = (RadioButton) findViewById(R.id.radioButton);
-        avatar1RadioButton = (RadioButton) findViewById(R.id.radioButton1);
-        avatar2RadioButton = (RadioButton) findViewById(R.id.radioButton2);
-        avatar3RadioButton = (RadioButton) findViewById(R.id.radioButton3);
-        avatar4RadioButton = (RadioButton) findViewById(R.id.radioButton4);
-        avatar5RadioButton = (RadioButton) findViewById(R.id.radioButton5);
+        avatar1RadioButton = (RadioButton) findViewById(R.id.radioButton2);
+        avatar2RadioButton = (RadioButton) findViewById(R.id.radioButton3);
+        avatar3RadioButton = (RadioButton) findViewById(R.id.radioButton4);
+        avatar4RadioButton = (RadioButton) findViewById(R.id.radioButton5);
+
+        //radio controller
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.radioButton:
+                        avatarString = "0";
+                        break;
+                    case R.id.radioButton2:
+                        avatarString = "1";
+                        break;
+                    case R.id.radioButton3:
+                        avatarString = "2";
+                        break;
+                    case R.id.radioButton4:
+                        avatarString = "3";
+                        break;
+                    case R.id.radioButton5:
+                        avatarString = "4";
+                        break;
+                }//switch
+            }//onchecked
+        });
 
     }//main mothod
 
@@ -45,7 +68,31 @@ public class SignUpActivity extends AppCompatActivity {
             // havve space
             MyAlert myAlert = new MyAlert();
             myAlert.myDialog(this, "มีช่องว่าง", "กรุณากรอกทุกช่อง");
-        }
+        } else if (checkChooseAvatar()) {
+            confirmData();
+        } else {
+            MyAlert myAlert = new MyAlert();
+            myAlert.myDialog(this,"กรุณาเลือก Avatar",
+                    "กรุณาเลือก Avatar ด้วย");
+        }//if
+
     }//clicksignupsign
+
+    private void confirmData() {
+
+    }
+
+    private boolean checkChooseAvatar() {
+        boolean status = true;
+        if (avatar0RadioButton.isChecked() ||
+                avatar1RadioButton.isChecked() ||
+                avatar2RadioButton.isChecked() ||
+                avatar3RadioButton.isChecked() ||
+                avatar4RadioButton.isChecked()) {
+            //have checked
+        } else {
+        }//if
+        return status;
+    }
 
 }//main class
