@@ -81,8 +81,8 @@ public class SignUpActivity extends AppCompatActivity {
     }//clicksignupsign
 
     private void confirmData() {
-        MyData = myData = new MyData();
-        int[] avatarInts = myData.getAvatarints();
+        MyData myData = new MyData();
+        int[] avatarInts = myData.getAvatarInts();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(false);
@@ -117,7 +117,9 @@ public class SignUpActivity extends AppCompatActivity {
                 avatar3RadioButton.isChecked() ||
                 avatar4RadioButton.isChecked()) {
             //have checked
+            status = true;
         } else {
+            status = false;
         }//if
         return status;
     }
