@@ -26,8 +26,8 @@ public class SignUpActivity extends AppCompatActivity {
     private RadioGroup radioGroup;
     private RadioButton avatar0RadioButton, avatar1RadioButton, avatar2RadioButton, avatar3RadioButton, avatar4RadioButton;
     private String nameString, userString, passwordString, avatarString;
-    //private static final String urlPHP = "http://walnut.cm2cars.com/add_user_master.php";
-    private static final String urlPHP = "http://swiftcodingthai.com/cmru/add_user_master.php";
+    private static final String urlPHP = "http://walnut.cm2cars.com/add_user_master.php";
+    //private static final String urlPHP = "http://swiftcodingthai.com/cmru/add_user_master.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +44,7 @@ public class SignUpActivity extends AppCompatActivity {
         avatar2RadioButton = (RadioButton) findViewById(R.id.radioButton3);
         avatar3RadioButton = (RadioButton) findViewById(R.id.radioButton4);
         avatar4RadioButton = (RadioButton) findViewById(R.id.radioButton5);
+
 
         //radio controller
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -69,6 +70,7 @@ public class SignUpActivity extends AppCompatActivity {
             }//onchecked
         });
 
+
     }//main mothod
 
     public void clickSignUpSign(View view) {
@@ -81,7 +83,7 @@ public class SignUpActivity extends AppCompatActivity {
         if (nameString.equals("") || userString.equals("") || passwordString.equals("")) {
             // havve space
             MyAlert myAlert = new MyAlert();
-            myAlert.myDialog(this, "มีช่องว่าง", "กรุณากรอกทุกช่อง");
+            myAlert.myDialog(this, "ผิดพลาด", "กรุณากรอกข้อมูลให้ครบทุกช่อง");
         } else if (checkChooseAvatar()) {
             confirmData();
         } else {
@@ -91,6 +93,7 @@ public class SignUpActivity extends AppCompatActivity {
         }//if
 
     }//clicksignupsign
+
 
     private void confirmData() {
         MyData myData = new MyData();
@@ -107,11 +110,11 @@ public class SignUpActivity extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
+
         builder.setPositiveButton("confirm", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 upLloadUserToServer();
-                dialog.dismiss();
             }
         });
         builder.show();
@@ -121,10 +124,10 @@ public class SignUpActivity extends AppCompatActivity {
         OkHttpClient okHttpClient = new OkHttpClient();
         RequestBody requestBody = new FormEncodingBuilder()
                 .add("isAdd", "true")
-                .add("Name", nameString)
-                .add("User", userString)
-                .add("Password", passwordString)
-                .add("Avata", avatarString)
+                .add("name", nameString)
+                .add("user", userString)
+                .add("password", passwordString)
+                .add("avatar", avatarString)
                 .build();
         Request.Builder builder = new Request.Builder();
         Request request = builder.url(urlPHP).post(requestBody).build();

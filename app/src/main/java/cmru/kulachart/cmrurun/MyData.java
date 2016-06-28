@@ -10,6 +10,7 @@ public class MyData {
     };
 
     public int[] getAvatarInts() {
+
         return avatarInts;
     }
 }//mydata main class

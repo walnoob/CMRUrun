@@ -12,8 +12,10 @@ public class MyAlert {
                          String strTitle,
                          String strMessage) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        //ไม่สามารถกด Undo ได้
         builder.setCancelable(false);
         builder.setIcon(R.drawable.danger);
+        builder.setTitle(strTitle);
         builder.setMessage(strMessage);
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
@@ -21,5 +23,6 @@ public class MyAlert {
                 dialog.dismiss();
             }
         });
+        builder.show();
     }
 }//main class

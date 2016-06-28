@@ -45,6 +45,16 @@ public class MainActivity extends AppCompatActivity {
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }//main medhod
 
+    // Create Inner Class
+    private class SyncUser extends AsyncTask<Void, Void, String> {
+
+        @Override
+        protected String doInBackground(Void... params) {
+            return null;
+        } // doInBackground
+    } // SynUser Class
+
+
     @Override
     public void onStart() {
         super.onStart();
@@ -85,26 +95,18 @@ public class MainActivity extends AppCompatActivity {
         client.disconnect();
     }
 
-    // create Inner class
-    private class SynUser extends AsyncTask<Void, Void, String> {
-
-        @Override
-        protected String doInBackground(Void... params) {
-            return null;
-        }//doinback
-
-    }//Synuser
-
     public void clickSignIn(View view) {
+        // Click Sign In
         userString = userEditText.getText().toString().trim();
         passwordString = passwordEditText.getText().toString().trim();
 
+        // Check Space
         if (userString.equals("") || passwordString.equals("")) {
             MyAlert myAlert = new MyAlert();
-            myAlert.myDialog(this, "Have Space", "Please Fill All Ecery Black");
+            myAlert.myDialog(this, "ผิดพลาด", "โปรดกรอกข้อมูลให้ครบถ้วน");
         }
-
     }
+
 
     public void clickSignUpMain(View view) {
         startActivity(new Intent(MainActivity.this, SignUpActivity.class));
