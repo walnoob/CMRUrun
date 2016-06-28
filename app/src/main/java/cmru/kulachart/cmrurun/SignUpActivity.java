@@ -9,6 +9,12 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.squareup.okhttp.Call;
+import com.squareup.okhttp.FormEncodingBuilder;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
+
 public class SignUpActivity extends AppCompatActivity {
 
     //explicit
@@ -107,7 +113,17 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void upLloadUserToServer() {
-        ok
+        OkHttpClient okHttpClient = new OkHttpClient();
+        RequestBody requestBody = new FormEncodingBuilder()
+                .add("isAdd", "true")
+                .add("name", nameString)
+                .add("user", userString)
+                .add("password", passwordString)
+                .add("avatar", avatarString)
+                .build();
+        Request.Builder builder = new Request.Builder();
+        Request request = builder.url(urlPHP).post(requestBody).build();
+        Call call = okHttpClient.newCall(request);
 
     }
 
