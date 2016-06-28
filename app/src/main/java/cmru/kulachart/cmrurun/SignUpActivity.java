@@ -26,8 +26,8 @@ public class SignUpActivity extends AppCompatActivity {
     private RadioGroup radioGroup;
     private RadioButton avatar0RadioButton, avatar1RadioButton, avatar2RadioButton, avatar3RadioButton, avatar4RadioButton;
     private String nameString, userString, passwordString, avatarString;
-    private static final String urlPHP = "http://walnut.cm2cars.com/add_user_master.php";
-    //private static final String urlPHP = "http://swiftcodingthai.com/cmru/add_user_master.php";
+    //private static final String urlPHP = "http://walnut.cm2cars.com/add_user_master.php";
+    private static final String urlPHP = "http://swiftcodingthai.com/cmru/add_user_master.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,10 +124,10 @@ public class SignUpActivity extends AppCompatActivity {
         OkHttpClient okHttpClient = new OkHttpClient();
         RequestBody requestBody = new FormEncodingBuilder()
                 .add("isAdd", "true")
-                .add("name", nameString)
-                .add("user", userString)
-                .add("password", passwordString)
-                .add("avatar", avatarString)
+                .add("Name", nameString)
+                .add("User", userString)
+                .add("Password", passwordString)
+                .add("Avata", avatarString)
                 .build();
         Request.Builder builder = new Request.Builder();
         Request request = builder.url(urlPHP).post(requestBody).build();
