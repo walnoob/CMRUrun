@@ -1,5 +1,7 @@
 package cmru.kulachart.cmrurun;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -79,6 +81,31 @@ public class SignUpActivity extends AppCompatActivity {
     }//clicksignupsign
 
     private void confirmData() {
+        MyData = myData = new MyData();
+        int[] avatarInts = myData.getAvatarints();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setIcon(avatarInts[Integer.parseInt(avatarString)]);
+        builder.setTitle(nameString);
+        builder.setMessage("User = " + userString + "\n" + "Password = " + passwordString);
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.setPositiveButton("confirm", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                upLloadUserToServer();
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
+
+    private void upLloadUserToServer() {
 
     }
 
