@@ -16,6 +16,7 @@ public class SignUpActivity extends AppCompatActivity {
     private RadioGroup radioGroup;
     private RadioButton avatar0RadioButton, avatar1RadioButton, avatar2RadioButton, avatar3RadioButton, avatar4RadioButton;
     private String nameString, userString, passwordString, avatarString;
+    private static final String urlPHP = "http://walnut.cm2cars.com/add_user_master.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +107,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void upLloadUserToServer() {
+        ok
 
     }
 
