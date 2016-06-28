@@ -2,6 +2,7 @@ package cmru.kulachart.cmrurun;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -12,7 +13,7 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText nameEditText, passwordEditText , userEditText;
     private RadioGroup radioGroup;
     private RadioButton avatar0RadioButton, avatar1RadioButton, avatar2RadioButton, avatar3RadioButton, avatar4RadioButton, avatar5RadioButton;
-
+    private String nameString, userString, passwordString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,4 +33,19 @@ public class SignUpActivity extends AppCompatActivity {
         avatar5RadioButton = (RadioButton) findViewById(R.id.radioButton5);
 
     }//main mothod
+
+    public void clickSignUpSign(View view) {
+        //get value drom edit text
+        nameString = nameEditText.getText().toString().trim();
+        userString = userEditText.getText().toString().trim();
+        passwordString = passwordEditText.getText().toString().trim();
+        //chech space
+
+        if (nameString.equals("") || userString.equals("") || passwordString.equals("")) {
+            // havve space
+            MyAlert myAlert = new MyAlert();
+            myAlert.myDialog(this, "มีช่องว่าง", "กรุณากรอกทุกช่อง");
+        }
+    }//clicksignupsign
+
 }//main class

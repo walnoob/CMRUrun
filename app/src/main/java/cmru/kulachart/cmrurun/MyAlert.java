@@ -18,7 +18,7 @@ public class MyAlert {
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //not yet
+                dialog.dismiss();
             }
         })
     }
