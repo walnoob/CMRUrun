@@ -5,6 +5,7 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -70,8 +71,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             userLngADouble = gpsLocation.getLongitude();
         }
 
-        Log.d("29JuneV1", "userLat ==>" + userLatADouble);
-        Log.d("29JuneV1", "userLon ==>" + userLngADouble);
+
     }//onresum
 
     public Location myFindLocation(String strProvider) {
@@ -126,7 +126,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //
         createStationMaker();
 
+        myLoop();
+
     }//onmap ready
+
+    private void myLoop() {
+        Log.d("29JuneV1", "userLat ==>" + userLatADouble);
+        Log.d("29JuneV1", "userLon ==>" + userLngADouble);
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                myLoop();
+            }
+        }, 3000);
+    }//my loop
+
 
     private void createStationMaker() {
         MyData myData = new MyData();
