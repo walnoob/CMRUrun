@@ -61,8 +61,7 @@
             android:id="@+id/editText4"
             android:hint="User :"
             android:inputType="text"
-            android:textColor="@color/abc_background_cache_hint_selector_material_light"
-            android:textColorHint="@color/abc_background_cache_hint_selector_material_light" />
+            android:textColorHint="@color/background_material_light" />
 
         <EditText
             android:layout_width="match_parent"
@@ -70,7 +69,6 @@
             android:id="@+id/editText5"
             android:hint="Password :"
             android:inputType="textPassword"
-            android:textColor="@color/abc_background_cache_hint_selector_material_light"
-            android:textColorHint="@color/abc_background_cache_hint_selector_material_light" />
+            android:textColorHint="@color/background_floating_material_light" />
     </LinearLayout>
 </RelativeLayout>
